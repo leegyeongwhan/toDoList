@@ -6,7 +6,6 @@ let id = 0;
 
 const setTodos = (newTodos) => {
     todos = newTodos;
-    print(); // todos가 변경될 때마다 화면 갱신
 }
 
 const getAllTodos = () => {
@@ -16,12 +15,14 @@ const getAllTodos = () => {
 const deleteTodo = (todoId) => {
     console.log(todoId);
     setTodos(getAllTodos().filter(todo => todo.id !== todoId));
+    print();
 }
 
 const completeTodo = (todoId) => {
     setTodos(getAllTodos().map(todo =>
         todo.id === todoId ? {...todo, isCompleted: !todo.isCompleted} : todo
     ));
+    print();
 }
 
 const updateTodo = (text, todoId) => {
@@ -34,4 +35,7 @@ const insertTodo = (content) => {
     const newId = id++;
     const newTodo = {id: newId, isCompleted: false, content};
     setTodos([...getAllTodos(), newTodo]);
+    print();
 }
+
+
