@@ -1,6 +1,8 @@
 const todoInputElem = document.querySelector('.todo-inner');
 const todoListElem = document.querySelector('.todo-list');
 const leftItemsElem = document.querySelector('.left-items')
+const completeAllBtnElem = document.querySelector('.complete-all-btn');
+
 
 const getActiveTodos = () => {
     return todos.filter(todo => todo.isCompleted === false);
@@ -22,7 +24,6 @@ const setTodos = (newTodos) => {
 const getAllTodos = () => {
     return todos;
 }
-
 
 const deleteTodo = (todoId) => {
     const newTodos = getAllTodos().filter(todo => todo.id !== todoId );
@@ -48,8 +49,10 @@ const updateTodo = (text, todoId) => {
 
 const insertTodo = (content) => {
     const newId = id++;
-    const newTodo = {id: newId, isCompleted: false, content};
-    setTodos([...getAllTodos(), newTodo]);
+    const newTodos = getAllTodos().concat({id: newId, isCompleted: false, content: content })
+    setTodos(newTodos)
+    setLeftItems()
+    checkIsAllCompleted();
     print();
 }
 

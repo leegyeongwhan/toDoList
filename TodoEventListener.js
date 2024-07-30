@@ -1,15 +1,3 @@
-const getCompletedTodos = () => {
-    return todos.filter(todo => todo.isCompleted === true );
-}
-
-const createDeleteButton = (todoId) => {
-    const delBtnElem = document.createElement('button');
-    delBtnElem.classList.add('delBtn');
-    delBtnElem.addEventListener('click', () => deleteTodo(todoId));
-    delBtnElem.innerHTML = 'X';
-    return delBtnElem;
-}
-
 const onDoubleClick = (e, todoId) => {
     const todoElem = e.target;
     const inputText = e.target.innerText;
@@ -52,7 +40,7 @@ const print = () => {
 
         const todoElem = document.createElement('div');
         todoElem.classList.add('todo');
-        todoElem.addEventListener('dblclick', (event) => onDbclickTodo(event, todo.id))
+        todoElem.addEventListener('dblclick', (event) => onDoubleClick(event, todo.id))
         todoElem.innerText = todo.content;
 
         const delBtnElem = document.createElement('button');

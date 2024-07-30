@@ -1,10 +1,8 @@
-const completeAllBtnElem = document.querySelector('.complete-all-btn');
+let isAllCompleted = ''; // 전체 todos 체크 여부
 
 const getCompletedTodos = () => {
     return todos.filter(todo => todo.isCompleted === true);
 }
-
-let isAllCompleted = ''; // 전체 todos 체크 여부
 
 const setIsAllCompleted = (bool) => {
     isAllCompleted = bool
@@ -40,6 +38,6 @@ const onClickCompleteAll = () => {
     if (isAllCompleted) incompleteAll(); // isAllCompleted가 true이면 todos를 전체 미완료 처리
     else completeAll(); // isAllCompleted가 false이면 todos를 전체 완료 처리
     setIsAllCompleted(!isAllCompleted); // isAllCompleted 토글
-    paintTodos(); // 새로운 todos를 렌더링
+    print(); // 새로운 todos를 렌더링
     setLeftItems()
 }
