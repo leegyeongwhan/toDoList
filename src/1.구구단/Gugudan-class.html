@@ -20,6 +20,7 @@
         onSubmit = (e) => {
             e.preventDefault();
             if (parseInt(this.state.value) === this.state.first * this.state.second) {
+                //preState 는 예전 상태
                 this.setState((prevState) => {
                     return {
                         result: this.state.first + " * " + this.state.second + "=" + prevState.value + '정답 ',
@@ -28,6 +29,14 @@
                         value: '',
                     };
                 });
+                //보통은 this 객체 를 쓰지만 setState안에 this.state가 들어가면
+                //함수를 쓴다
+                // this.setState((prevState) => {
+                //     return {
+                //         value: prevState.value + 1
+                //     }
+                // })
+
                 this.input.focus();
             } else {
                 this.setState({
